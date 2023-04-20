@@ -1,0 +1,50 @@
+# General
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.vscode/
+.DS_Store
+.env
+.env.local
+.env.development
+.env.production
+.env.staging
+.env.test
+
+# React
+/build/
+/public/
+/src/setupTests.js
+*.swp
+*.swo
+
+# Flask
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+.Python
+venv/
+virtualenv/
+instance/
+.webassets-cache
+
+# Logs
+*.log
+logs/
+
+# Cache
+.cache
+.pytest_cache/
+
+# Test coverage
+.coverage
+htmlcov/
+
+# User-specific files
+*.sublime*
+*.iml
+.idea/
+*.code-workspace
