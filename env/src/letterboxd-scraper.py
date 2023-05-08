@@ -1,7 +1,8 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import csv
+import time
 
 app = Flask(__name__)
 
@@ -27,13 +28,14 @@ def ScrapeLetterboxdUsernames(num_pages):
         driver.quit()
 
 
-@app.route('/ScrapeLetterboxdFavourites')
-def ScrapeLetterboxdFavourites(username):
+@app.route('/ScrapeLetterboxdFavourites', methods=['GET'])
+def ScrapeLetterboxdFavourites():
     favouriteFilms = []
     driver = webdriver.Chrome()
-    driver.get('https://letterboxd.com/'+str(username)+'/')
+    driver.get('https://letterboxd.com/'+str(request.args.get('username'))+'/')
 
-    driver.implicitly_wait(1)
+    time.sleep(0.05)  # Seems to be the smallest amount of time that works
+
     page_source = driver.page_source
     soup = BeautifulSoup(page_source, 'html.parser')
     favorite_films_section = soup.find_all('li', class_='poster-container')
@@ -56,7 +58,7 @@ def ScrapeLetterboxdFavourites(username):
 
 
 if __name__ == '__main__':
-    app.run
+    app.run()
     # with open('usernames.txt', newline='') as csvfile:
     #     reader = csv.reader(csvfile)
     #     for row in reader:

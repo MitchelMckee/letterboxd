@@ -10,9 +10,10 @@ function UsernameForm() {
     const response = await fetch(
       `/ScrapeLetterboxdFavourites?username=${username}`
     );
-    const data = await response.json();
 
-    setFavourite(data.favourite);
+    const data = await response.json();
+    console.log(data);
+    setFavourite(data.favourite_films.join(", "));
   };
 
   return (
