@@ -34,7 +34,9 @@ def ScrapeLetterboxdFavourites():
     driver = webdriver.Chrome()
     driver.get('https://letterboxd.com/'+str(request.args.get('username'))+'/')
 
-    time.sleep(0.05)  # Seems to be the smallest amount of time that works
+    time.sleep(0.08)
+    # Seems to be the smallest amount of time that works
+    # can go as low as 0.05 but sometimes doesn't get all titles
 
     page_source = driver.page_source
     soup = BeautifulSoup(page_source, 'html.parser')
@@ -54,7 +56,7 @@ def ScrapeLetterboxdFavourites():
             break
 
     driver.quit()
-    return jsonify({'favorite_films': favouriteFilms})
+    return jsonify({'favourite_films': favouriteFilms})
 
 
 if __name__ == '__main__':
