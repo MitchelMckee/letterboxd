@@ -12,8 +12,9 @@ function UsernameForm() {
     );
 
     const data = await response.json();
-    console.log(data);
-    setFavourite(data.favourite_films.join(", "));
+    console.log("data:", data["favourite_films"]);
+    setFavourite(data["favourite_films"]);
+    console.log(favourite);
   };
 
   return (
@@ -27,7 +28,13 @@ function UsernameForm() {
         />
       </label>
       <button type="submit">Search</button>
-      {favourite && <p>{favourite}</p>}
+      {favourite && (
+        <ul>
+          {favourite.map((film, index) => (
+            <li key={index}>{film}</li>
+          ))}
+        </ul>
+      )}
     </form>
   );
 }
