@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 import csv
 import time
 
@@ -30,8 +31,13 @@ def ScrapeLetterboxdUsernames(num_pages):
 
 @app.route('/ScrapeLetterboxdFavourites', methods=['GET'])
 def ScrapeLetterboxdFavourites():
+    print("Scraping favourites for... " + str(request.args.get('username')))
     favouriteFilms = []
-    driver = webdriver.Chrome()
+
+    options = Options()
+    options.add_argument('--headless')
+    driver = webdriver.Chrome(options=options)
+
     driver.get('https://letterboxd.com/'+str(request.args.get('username'))+'/')
 
     time.sleep(0.08)
