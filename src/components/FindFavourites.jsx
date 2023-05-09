@@ -9,13 +9,6 @@ function UsernameForm() {
   const [showResults, setShowResults] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleClick = () => {
-    // setLoading(true);
-    // setTimeout(() => {
-    //   setShowResults(true);
-    // }, 5000);
-  };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(`Username submitted: ${username}`);
@@ -38,7 +31,7 @@ function UsernameForm() {
   return (
     <div>
       {showResults ? (
-        <DisplayQuirk favourite={favourite} />
+        <DisplayQuirk favourite={favourite} username={username} />
       ) : (
         <form onSubmit={handleSubmit}>
           <Flex justifyContent="center" alignItems="center">
@@ -91,12 +84,7 @@ function UsernameForm() {
             paddingTop={"2%"}
             paddingBottom={"2%"}
           >
-            <Button
-              colorScheme={"green"}
-              type="submit"
-              onClick={handleClick}
-              isLoading={loading}
-            >
+            <Button colorScheme={"green"} type="submit" isLoading={loading}>
               See how quirky you really are!
             </Button>
           </Flex>

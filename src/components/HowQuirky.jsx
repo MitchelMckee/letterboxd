@@ -39,7 +39,7 @@ function DisplayQuirk(props) {
         textAlign={"Center"}
         paddingBottom={"1%"}
       >
-        Your favourite films are...
+        {props.username}, your favourite films are...
       </Heading>
       {props.favourite && (
         <UnorderedList>
