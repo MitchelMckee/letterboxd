@@ -18,7 +18,7 @@ function DisplayQuirk(props) {
   let scores = 0; // used to add together the scores of the individual movies
   const [posters, setPosters] = useState([]);
   const [scoredMovies, setScoredMovies] = useState([]);
-  const MOVIEDB_API_KEY = "2722a23afd6bef9cff0c38f0b37e9fb1";
+  const MOVIEDB_API_KEY = "2722a23afd6bef9cff0c38f0b37e9fb1"; // I know this is here please don't abuse it thanks :)
 
   useEffect(() => {
     async function fetchScore() {
