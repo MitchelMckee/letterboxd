@@ -6,12 +6,14 @@ import {
   Image,
   UnorderedList,
   ListItem,
+  Text,
 } from "@chakra-ui/react";
 
 const AnimatedImage = motion(Image);
+const AnimatedHeading = motion(Heading);
 
 function DisplayQuirk(props) {
-  let scores = 0;
+  let scores = 0; // used to add together the scores of the individual movies
   const [posters, setPosters] = useState([]);
   const [scoredMovies, setScoredMovies] = useState([]);
   const MOVIEDB_API_KEY = "2722a23afd6bef9cff0c38f0b37e9fb1";
@@ -56,12 +58,37 @@ function DisplayQuirk(props) {
       return match.score;
     }
   }
-
   function getQuirkScore() {
     const maxPossibleScore = 400; // if all 4 films are scored 100
     let quirkScore = (scores / maxPossibleScore) * 100;
     quirkScore = 100 - quirkScore;
     return quirkScore + "%";
+  }
+
+  function quirkComment() {
+    console.log(getQuirkScore());
+    const quirk = getQuirkScore().replace("%", "");
+    if (quirk > 90) {
+      return "You're a real quirkster";
+    } else if (quirk > 80) {
+      return "You are a fairly quirky person";
+    } else if (quirk > 70) {
+      return "You are a mostly quirky";
+    } else if (quirk > 60) {
+      return "You are not fairly quirky";
+    } else if (quirk > 50) {
+      return "You are only somewhat quirky";
+    } else if (quirk > 40) {
+      return "You are pretty quirky";
+    } else if (quirk > 30) {
+      return "You are a bit quirky";
+    } else if (quirk > 20) {
+      return "You are not very quirky";
+    } else if (quirk > 10) {
+      return "You are extremely un-quirky";
+    } else if (quirk > 0) {
+      return "You are the least quirky it is possible to be";
+    }
   }
 
   return (
@@ -120,21 +147,36 @@ function DisplayQuirk(props) {
                   animate={{ opacity: 1, transition: { delay: index * 0.3 } }}
                 />
                 <br />
-                {getIndividualScore(film)}
+                <Heading color={"#202830"}>{getIndividualScore(film)}</Heading>
               </ListItem>
             ))}
           </Flex>
           <Heading as={"h1"} color={"white"} textAlign={"center"}>
             Your Quirk'o'meter score is...
           </Heading>
-          <Heading
+          <AnimatedHeading
             as={"h2"}
             color={"white"}
             textAlign={"center"}
             paddingTop={"2%"}
+            paddingBottom={"2%"}
+            initial={{ opacity: 0 }}
+            style={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 1.4 } }}
           >
             {getQuirkScore()}
-          </Heading>
+          </AnimatedHeading>
+          <AnimatedHeading
+            as={"h4"}
+            color={"white"}
+            textAlign={"center"}
+            size={"sm"}
+            initial={{ opacity: 0 }}
+            style={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 1.6 } }}
+          >
+            {quirkComment()}
+          </AnimatedHeading>
         </UnorderedList>
       )}
     </div>
