@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Flex, Input, Heading, Button, Image } from "@chakra-ui/react";
+
 import "./styles.css";
 import DisplayQuirk from "./HowQuirky";
 

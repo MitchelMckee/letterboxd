@@ -7,10 +7,12 @@ import {
   UnorderedList,
   ListItem,
   Text,
+  Link,
 } from "@chakra-ui/react";
 
 const AnimatedImage = motion(Image);
 const AnimatedHeading = motion(Heading);
+const AnimatedText = motion(Text);
 
 function DisplayQuirk(props) {
   let scores = 0; // used to add together the scores of the individual movies
@@ -83,7 +85,7 @@ function DisplayQuirk(props) {
     } else if (quirk > 30) {
       return "You are a bit quirky";
     } else if (quirk > 20) {
-      return "You are not very quirky";
+      return "You are moderately quirky";
     } else if (quirk > 10) {
       return "You are extremely un-quirky";
     } else if (quirk > 0) {
@@ -177,6 +179,18 @@ function DisplayQuirk(props) {
           >
             {quirkComment()}
           </AnimatedHeading>
+          <AnimatedText
+            textAlign={"center"}
+            color={"38A169"}
+            paddingTop={"1%"}
+            initial={{ opacity: 0 }}
+            style={{ opacity: 0 }}
+            animate={{ opacity: 1, transition: { delay: 1.8 } }}
+          >
+            <Link href="{window.location.reload()}" color={"#38A169"}>
+              Try another user?
+            </Link>
+          </AnimatedText>
         </UnorderedList>
       )}
     </div>
