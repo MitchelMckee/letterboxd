@@ -14,7 +14,6 @@ yarn-error.log*
 
 # React
 /build/
-/public/
 /src/setupTests.js
 *.swp
 *.swo
