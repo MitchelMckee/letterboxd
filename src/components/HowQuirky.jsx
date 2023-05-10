@@ -134,7 +134,7 @@ function DisplayQuirk(props) {
             listStyleType={"none"}
             textAlign={"center"}
             gap={"2%"}
-            paddingBottom={"2%"}
+            paddingBottom={"1%"}
           >
             {props.favourite.map((film, index) => (
               <ListItem key={index} color={"white"}>
@@ -148,8 +148,9 @@ function DisplayQuirk(props) {
                   style={{ opacity: 0 }}
                   animate={{ opacity: 1, transition: { delay: index * 0.3 } }}
                 />
-                <br />
-                <Heading color={"#202830"}>{getIndividualScore(film)}</Heading>
+                <Heading color={"#202830"} size={"1px"}>
+                  {getIndividualScore(film)}
+                </Heading>
               </ListItem>
             ))}
           </Flex>
