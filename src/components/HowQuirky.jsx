@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import { motion } from "framer-motion";
 import {
   Flex,
   Heading,
@@ -7,6 +7,8 @@ import {
   UnorderedList,
   ListItem,
 } from "@chakra-ui/react";
+
+const AnimatedImage = motion(Image);
 
 function DisplayQuirk(props) {
   let scores = 0;
@@ -107,12 +109,15 @@ function DisplayQuirk(props) {
           >
             {props.favourite.map((film, index) => (
               <ListItem key={index} color={"white"}>
-                <Image
+                <AnimatedImage
                   src={`https://image.tmdb.org/t/p/w500/${posters[index]}`}
                   alt={`${film} poster`}
                   height={200}
                   width={150}
                   borderRadius={"5%"}
+                  initial={{ opacity: 0 }}
+                  style={{ opacity: 0 }}
+                  animate={{ opacity: 1, transition: { delay: index * 0.3 } }}
                 />
                 <br />
                 {getIndividualScore(film)}
