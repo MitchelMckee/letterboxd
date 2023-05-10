@@ -1,14 +1,35 @@
+import { useEffect, useState } from "react";
+
 import {
   Flex,
-  Input,
   Heading,
-  Button,
   Image,
   UnorderedList,
   ListItem,
 } from "@chakra-ui/react";
 
 function DisplayQuirk(props) {
+  const [posters, setPosters] = useState([]);
+  const REACT_APP_MOVIEDB_API_KEY = "2722a23afd6bef9cff0c38f0b37e9fb1";
+
+  useEffect(() => {
+    const fetchMoviePosters = async () => {
+      const moviePosters = [];
+      for (const film of props.favourite) {
+        const filmNoDate = film.replace(/\s\(\d{4}\)$/, "");
+        const response = await fetch(
+          `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_MOVIEDB_API_KEY}&query=${filmNoDate}`
+        );
+        const data = await response.json();
+        if (data.results && data.results.length > 0) {
+          moviePosters.push(data.results[0].poster_path);
+        }
+      }
+      setPosters(moviePosters);
+    };
+    fetchMoviePosters();
+  }, [props.favourite]);
+
   return (
     <div>
       <Flex justifyContent="center" alignItems="center">
@@ -42,10 +63,24 @@ function DisplayQuirk(props) {
         {props.username}, your favourite films are...
       </Heading>
       {props.favourite && (
-        <UnorderedList>
+        <UnorderedList
+          display={"flex"}
+          justifyContent={"center"}
+          paddingTop={"2%"}
+          listStyleType={"none"}
+          textAlign={"center"}
+          gap={"2%"}
+        >
           {props.favourite.map((film, index) => (
             <ListItem key={index} color={"white"}>
-              {film}
+              <Image
+                src={`https://image.tmdb.org/t/p/w500/${posters[index]}`}
+                alt={`${film} poster`}
+                height={200}
+                width={150}
+                borderRadius={"5%"}
+              />
+              <br />
             </ListItem>
           ))}
         </UnorderedList>
