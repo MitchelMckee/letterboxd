@@ -16,7 +16,8 @@ function UsernameForm() {
     setLoading(true);
     try {
       const response = await fetch(
-        `/ScrapeLetterboxdFavourites?username=${username}`
+        // `/ScrapeLetterboxdFavourites?username=${username}`
+        `http://172.31.43.91:5000/api/ScrapeLetterboxdFavourites?username=${username}`
       );
 
       const data = await response.json();
