@@ -9,16 +9,30 @@ import {
 } from "@chakra-ui/react";
 
 function DisplayQuirk(props) {
+  let scores = 0;
   const [posters, setPosters] = useState([]);
-  const REACT_APP_MOVIEDB_API_KEY = "2722a23afd6bef9cff0c38f0b37e9fb1";
+  const [scoredMovies, setScoredMovies] = useState([]);
+  const MOVIEDB_API_KEY = "2722a23afd6bef9cff0c38f0b37e9fb1";
 
   useEffect(() => {
+    async function fetchScore() {
+      const response = await fetch(require("../data/scored-movies.csv"));
+      const text = await response.text();
+      const lines = text.split("\n");
+      const movies = lines.map((line) => {
+        const [title, score] = line.split(",");
+        return { title, score: parseInt(score) };
+      });
+      setScoredMovies(movies);
+    }
+    fetchScore();
+
     const fetchMoviePosters = async () => {
       const moviePosters = [];
       for (const film of props.favourite) {
         const filmNoDate = film.replace(/\s\(\d{4}\)$/, "");
         const response = await fetch(
-          `https://api.themoviedb.org/3/search/movie?api_key=${REACT_APP_MOVIEDB_API_KEY}&query=${filmNoDate}`
+          `https://api.themoviedb.org/3/search/movie?api_key=${MOVIEDB_API_KEY}&query=${filmNoDate}`
         );
         const data = await response.json();
         if (data.results && data.results.length > 0) {
@@ -29,6 +43,24 @@ function DisplayQuirk(props) {
     };
     fetchMoviePosters();
   }, [props.favourite]);
+
+  function getIndividualScore(film) {
+    const match = scoredMovies.find(
+      (scoredFilm) =>
+        scoredFilm.title.toLowerCase() === film.toLowerCase().trim()
+    );
+    if (match) {
+      scores += match.score;
+      return match.score;
+    }
+  }
+
+  function getQuirkScore() {
+    const maxPossibleScore = 400; // if all 4 films are scored 100
+    let quirkScore = (scores / maxPossibleScore) * 100;
+    quirkScore = 100 - quirkScore;
+    return quirkScore + "%";
+  }
 
   return (
     <div>
@@ -63,26 +95,41 @@ function DisplayQuirk(props) {
         {props.username}, your favourite films are...
       </Heading>
       {props.favourite && (
-        <UnorderedList
-          display={"flex"}
-          justifyContent={"center"}
-          paddingTop={"2%"}
-          listStyleType={"none"}
-          textAlign={"center"}
-          gap={"2%"}
-        >
-          {props.favourite.map((film, index) => (
-            <ListItem key={index} color={"white"}>
-              <Image
-                src={`https://image.tmdb.org/t/p/w500/${posters[index]}`}
-                alt={`${film} poster`}
-                height={200}
-                width={150}
-                borderRadius={"5%"}
-              />
-              <br />
-            </ListItem>
-          ))}
+        <UnorderedList>
+          <Flex
+            display={"flex"}
+            justifyContent={"center"}
+            paddingTop={"2%"}
+            listStyleType={"none"}
+            textAlign={"center"}
+            gap={"2%"}
+            paddingBottom={"2%"}
+          >
+            {props.favourite.map((film, index) => (
+              <ListItem key={index} color={"white"}>
+                <Image
+                  src={`https://image.tmdb.org/t/p/w500/${posters[index]}`}
+                  alt={`${film} poster`}
+                  height={200}
+                  width={150}
+                  borderRadius={"5%"}
+                />
+                <br />
+                {getIndividualScore(film)}
+              </ListItem>
+            ))}
+          </Flex>
+          <Heading as={"h1"} color={"white"} textAlign={"center"}>
+            Your Quirk'o'meter score is...
+          </Heading>
+          <Heading
+            as={"h2"}
+            color={"white"}
+            textAlign={"center"}
+            paddingTop={"2%"}
+          >
+            {getQuirkScore()}
+          </Heading>
         </UnorderedList>
       )}
     </div>
