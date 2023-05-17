@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/mitchelmckee/My Drive/letterboxd/env"
+VIRTUAL_ENV="/Users/mitchelmckee/My Drive/React Projects/letterboxd/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
