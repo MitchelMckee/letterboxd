@@ -2,10 +2,12 @@ from flask import Flask, jsonify, request
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from flask_cors import CORS
 import csv
 import time
 
 app = Flask(__name__)
+CORS(app)
 
 
 def ScrapeLetterboxdUsernames(num_pages):

@@ -6,3 +6,5 @@ app.add_url_rule('/ScrapeLetterboxdFavourites',
 # Path: env/src/wsgi.py
 if __name__ == '__main__':
     app.run()
+
+# gunicorn wsgi:app --bind=0.0.0.0:8080 --certfile=../cert.pem --keyfile=../key.pem
