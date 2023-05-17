@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/Users/mitchelmckee/My Drive/letterboxd/env/bin/python3" "$0" "$@"
+'''exec' "/Users/mitchelmckee/My Drive/React Projects/letterboxd/env/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re

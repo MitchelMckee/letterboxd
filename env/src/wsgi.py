@@ -7,4 +7,5 @@ app.add_url_rule('/ScrapeLetterboxdFavourites',
 if __name__ == '__main__':
     app.run()
 
+# Command to start the server:
 # gunicorn wsgi:app --bind=0.0.0.0:8080 --certfile=../cert.pem --keyfile=../key.pem
