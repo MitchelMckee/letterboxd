@@ -68,8 +68,7 @@ def ScrapeLetterboxdFavourites():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080, ssl_context=(
-        "env/cert.pem", "env/key.pem"))
+    app.run(host='0.0.0.0', port=8080)
     # with open('usernames.txt', newline='') as csvfile:
     #     reader = csv.reader(csvfile)
     #     for row in reader:
