@@ -9,6 +9,28 @@ import time
 app = Flask(__name__)
 CORS(app)
 
+
+def ScrapeLetterboxdUsernames(num_pages):
+    for i in range(num_pages):
+        driver = webdriver.Chrome()
+        driver.get(
+            'https://letterboxd.com/members/popular/this/all-time/page' + str(i))
+
+        driver.implicitly_wait(1)
+        page_source = driver.page_source
+        soup = BeautifulSoup(page_source, 'html.parser')
+        usernames_list = soup.find_all('td', class_='table-person')
+
+        for usernames in usernames_list:
+            for username in usernames.find_all('a', class_='name'):
+                print(username.get('href'))
+                with open('usernames.txt', 'a') as csvfile:
+                    writer = csv.writer(csvfile)
+                    writer.writerow([username.get('href')])
+
+        driver.quit()
+
+
 @app.route('/ScrapeLetterboxdFavourites', methods=['GET'])
 def ScrapeLetterboxdFavourites():
     print("Scraping favourites for... " + str(request.args.get('username')))
@@ -33,6 +55,9 @@ def ScrapeLetterboxdFavourites():
         for title in film.find_all('span', class_='frame-title'):
             if count < 4:
                 print(title.text)
+                # with open("favourites.txt", "a") as csvfile:
+                #     writer = csv.writer(csvfile)
+                #     writer.writerow([title.text])
                 favouriteFilms.append(title.text)
                 count += 1
         if count == 4:
@@ -44,4 +69,7 @@ def ScrapeLetterboxdFavourites():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
-
+    # with open('usernames.txt', newline='') as csvfile:
+    #     reader = csv.reader(csvfile)
+    #     for row in reader:
+    # ScrapeLetterboxdUsernames(2)
