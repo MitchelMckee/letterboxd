@@ -12,6 +12,9 @@ yarn-error.log*
 .env.staging
 .env.test
 
+#requirements
+requirements.txt
+
 # React
 /build/
 /src/setupTests.js
