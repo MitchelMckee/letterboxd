@@ -1,7 +1,8 @@
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-function Footer() {
+export default function Footer() {
   return (
     <footer>
       <a href="https://github.com/MitchelMckee">
@@ -15,5 +16,3 @@ function Footer() {
     </footer>
   );
 }
-
-export default Footer;
