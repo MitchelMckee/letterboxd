@@ -9,9 +9,6 @@ import time
 app = Flask(__name__)
 CORS(app)
 
-def lambda_handler(event, context):
-    return ScrapeLetterboxdFavourites()
-
 @app.route('/ScrapeLetterboxdFavourites', methods=['GET'])
 def ScrapeLetterboxdFavourites():
     print("Scraping favourites for... " + str(request.args.get('username')))
