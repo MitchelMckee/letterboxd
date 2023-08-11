@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from flask_cors import CORS
 import csv
 import time
@@ -15,8 +16,9 @@ def ScrapeLetterboxdFavourites():
     favouriteFilms = []
 
     options = Options()
+    service = Service()
     options.add_argument('--headless')
-    driver = webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(service=service, options=options)
 
     driver.get('https://letterboxd.com/'+str(request.args.get('username'))+'/')
 
