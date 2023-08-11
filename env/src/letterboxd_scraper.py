@@ -23,7 +23,7 @@ def ScrapeLetterboxdFavourites():
     driver.get('https://letterboxd.com/'+str(request.args.get('username'))+'/')
 
     time.sleep(0.4)
-    # Seems to be the smallest amount of time that works
+    # 0.08 Seems to be the smallest amount of time that works
     # can go as low as 0.05 but sometimes doesn't get all titles
 
     page_source = driver.page_source
