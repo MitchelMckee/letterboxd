@@ -39,16 +39,21 @@ def ScrapeLetterboxdFavourites(event, context):
     driver.quit()
 
     try:
-        return {
+       return {
             'statusCode': 200,
-            'body': json.dumps({'favourite_films': favouriteFilms})
-        }
+            'headers': {
+                'Access-Control-Allow-Origin': 'https://mjkm.co.uk',
+                'Access-Control-Allow-Credentials': True,
+            },
+    'body': json.dumps({'favourite_films': favouriteFilms})
+}
 
     except Exception as e:
         return {
             'statusCode': 500,
             'body': f'Failure: {e}'
         }
+
 
 
 
