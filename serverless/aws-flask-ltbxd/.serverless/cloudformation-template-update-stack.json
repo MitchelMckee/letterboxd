@@ -208,13 +208,13 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/aws-flask-ltbxd/dev/1697505714101-2023-10-17T01:21:54.101Z/aws-flask-ltbxd.zip"
+          "S3Key": "serverless/aws-flask-ltbxd/dev/1697506453760-2023-10-17T01:34:13.760Z/aws-flask-ltbxd.zip"
         },
         "Handler": "s_api.handler",
         "Runtime": "python3.9",
         "FunctionName": "aws-flask-ltbxd-dev-api",
         "MemorySize": 1024,
-        "Timeout": 6,
+        "Timeout": 30,
         "Role": {
           "Fn::GetAtt": [
             "IamRoleLambdaExecution",
@@ -226,14 +226,14 @@
         "ApiLogGroup"
       ]
     },
-    "ApiLambdaVersionhLVMkvDcU9qK7DI3meHhuT9Bpj0hUMZ597OHh9QjI": {
+    "ApiLambdaVersioncoDvkI32UYLOBMkg8QhhyIuYBKLq2hGuCTNyB7yv8": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ApiLambdaFunction"
         },
-        "CodeSha256": "eqLYPxtc44stgtXK5czlxHXpDAUGPH7+9lrrSkKkPWE="
+        "CodeSha256": "N3I22OHDyhkNkBio3n5M5LjExUYjpsG0+V3Nis6rbko="
       }
     },
     "ApiGatewayRestApi": {
@@ -354,7 +354,7 @@
         "ApiLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1697505704157": {
+    "ApiGatewayDeployment1697506444330": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -513,7 +513,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/aws-flask-ltbxd/dev/1697505714101-2023-10-17T01:21:54.101Z/custom-resources.zip"
+          "S3Key": "serverless/aws-flask-ltbxd/dev/1697506453760-2023-10-17T01:34:13.760Z/custom-resources.zip"
         },
         "FunctionName": "aws-flask-ltbxd-dev-custom-resource-apigw-cw-role",
         "Handler": "api-gateway-cloud-watch-role/handler.handler",
@@ -555,7 +555,7 @@
     "ApiLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ApiLambdaVersionhLVMkvDcU9qK7DI3meHhuT9Bpj0hUMZ597OHh9QjI"
+        "Ref": "ApiLambdaVersioncoDvkI32UYLOBMkg8QhhyIuYBKLq2hGuCTNyB7yv8"
       },
       "Export": {
         "Name": "sls-aws-flask-ltbxd-dev-ApiLambdaFunctionQualifiedArn"
