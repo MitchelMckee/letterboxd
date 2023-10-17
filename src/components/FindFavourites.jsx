@@ -16,7 +16,7 @@ function UsernameForm() {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://api.mjkm.co.uk:8080/ScrapeLetterboxdFavourites?username=${username}`
+        `https://p5eqnt2vbj.execute-api.eu-west-1.amazonaws.com/dev/ScrapeLetterboxdFavourites?username=${username}`
       );
 
       const data = await response.json();
