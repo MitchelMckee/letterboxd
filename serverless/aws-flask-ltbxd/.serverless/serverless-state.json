@@ -220,7 +220,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/aws-flask-ltbxd/dev/1697506453760-2023-10-17T01:34:13.760Z/aws-flask-ltbxd.zip"
+                "S3Key": "serverless/aws-flask-ltbxd/dev/1722363495395-2024-07-30T18:18:15.395Z/aws-flask-ltbxd.zip"
               },
               "Handler": "s_api.handler",
               "Runtime": "python3.9",
@@ -238,14 +238,14 @@
               "ApiLogGroup"
             ]
           },
-          "ApiLambdaVersioncoDvkI32UYLOBMkg8QhhyIuYBKLq2hGuCTNyB7yv8": {
+          "ApiLambdaVersionpXjHtU1JZeO9c0patg8aWY6gvVlyAH4XHbxjeVbho": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ApiLambdaFunction"
               },
-              "CodeSha256": "N3I22OHDyhkNkBio3n5M5LjExUYjpsG0+V3Nis6rbko="
+              "CodeSha256": "9Rgy06+OBBMuj1TWRMIO4RB3hwowgwLV3CsGeGWhNDU="
             }
           },
           "ApiGatewayRestApi": {
@@ -366,7 +366,7 @@
               "ApiLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1697506444330": {
+          "ApiGatewayDeployment1722363484879": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -525,7 +525,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/aws-flask-ltbxd/dev/1697506453760-2023-10-17T01:34:13.760Z/custom-resources.zip"
+                "S3Key": "serverless/aws-flask-ltbxd/dev/1722363495395-2024-07-30T18:18:15.395Z/custom-resources.zip"
               },
               "FunctionName": "aws-flask-ltbxd-dev-custom-resource-apigw-cw-role",
               "Handler": "api-gateway-cloud-watch-role/handler.handler",
@@ -567,7 +567,7 @@
           "ApiLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ApiLambdaVersioncoDvkI32UYLOBMkg8QhhyIuYBKLq2hGuCTNyB7yv8"
+              "Ref": "ApiLambdaVersionpXjHtU1JZeO9c0patg8aWY6gvVlyAH4XHbxjeVbho"
             },
             "Export": {
               "Name": "sls-aws-flask-ltbxd-dev-ApiLambdaFunctionQualifiedArn"
@@ -735,7 +735,7 @@
         "memory": 1024,
         "runtime": "python3.9",
         "vpc": {},
-        "versionLogicalId": "ApiLambdaVersioncoDvkI32UYLOBMkg8QhhyIuYBKLq2hGuCTNyB7yv8"
+        "versionLogicalId": "ApiLambdaVersionpXjHtU1JZeO9c0patg8aWY6gvVlyAH4XHbxjeVbho"
       }
     },
     "configValidationMode": "warn",
@@ -761,7 +761,7 @@
           "serverless_sdk/**"
         ],
         "artifact": "/Users/mitchelmckee/My Drive/React Projects/letterboxd/serverless/aws-flask-ltbxd/.serverless/aws-flask-ltbxd.zip",
-        "artifactDirectoryName": "serverless/aws-flask-ltbxd/dev/1697506453760-2023-10-17T01:34:13.760Z"
+        "artifactDirectoryName": "serverless/aws-flask-ltbxd/dev/1722363495395-2024-07-30T18:18:15.395Z"
       },
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
@@ -783,7 +783,7 @@
     "artifact": "/Users/mitchelmckee/My Drive/React Projects/letterboxd/serverless/aws-flask-ltbxd/.serverless/aws-flask-ltbxd.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/aws-flask-ltbxd/dev/1697506453760-2023-10-17T01:34:13.760Z",
+    "artifactDirectoryName": "serverless/aws-flask-ltbxd/dev/1722363495395-2024-07-30T18:18:15.395Z",
     "artifact": "aws-flask-ltbxd.zip"
   }
 }
